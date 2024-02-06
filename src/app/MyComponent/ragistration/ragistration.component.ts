@@ -39,6 +39,10 @@ export class RagistrationComponent {
 
   insertData() {
 
+    this.name = this.name?.trim();
+    this.state = this.state?.trim();
+
+
     var data = {
       name: this.name,
       email: this.email,

@@ -20,6 +20,10 @@ export class UpdateComponent {
   gender: string | undefined
 
   updateData() {
+
+    this.name = this.name?.trim();
+    this.state = this.state?.trim();
+
     var data = {
       name: this.name,
       email: this.email,
