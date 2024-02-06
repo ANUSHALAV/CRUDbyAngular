@@ -25,6 +25,7 @@ export class UpdateComponent {
     this.state = this.state?.trim();
 
     var data = {
+      
       name: this.name,
       email: this.email,
       pincode: this.pincode,

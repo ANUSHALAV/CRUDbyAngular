@@ -28,6 +28,10 @@ export class HealthServiceService {
     return this.httpClient.get("https://localhost:44308/api/health");
   }
 
+  getDataById(id:number){
+    return this.httpClient.get("https://localhost:44308/api/health/"+id)
+  }
+
   saveData(inputdata :object){
     return this.httpClient.post("https://localhost:44308/api/health/",inputdata);
   }
