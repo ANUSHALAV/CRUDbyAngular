@@ -1,0 +1,117 @@
+<section class="top-section">
+    <app-header></app-header>
+</section>
+
+<div class="form-section">
+    <div class="container-fluid pt-3 py-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2>Updation Here!</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form (ngSubmit)="updateData()">
+            <div class="row mb-3">
+                <div class="col-md-6 col-11">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="name" class="form-control" id="namefield" aria-describedby="emailHelp"
+                        [(ngModel)]="name" name="name" autocomplete="off" required="on"
+                        (keypress)="nameValidation($event)" maxlength="25">
+                </div>
+                <div class="col-md-6 col-11">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="emailfield" aria-describedby="emailHelp"
+                        [(ngModel)]="email" name="email" autocomplete="off" required="on"
+                        (keypress)="emailValidation($event)">
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <div class="col-md-6 col-11">
+                    <label for="age" class="form-label">Age</label>
+                    <input type="text" class="form-control" id="agefield" aria-describedby="emailHelp" [(ngModel)]="age"
+                        name="age" autocomplete="off" (keypress)="ageValidation($event)" maxlength="2">
+                </div>
+                <div class="col-md-6 col-11">
+                    <label for="gender" class="form-label">Gender</label>
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="gender" name="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+            </div>
+
+
+            <div class="row mb-3">
+                <div class="col-md-6 col-11">
+                    <label for="country" class="form-label">Country</label>
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="country" name="country"
+                        (change)="countryChange()">
+                        <option value="India">India</option>
+                        <option value="Pakishtan">Pakishtan</option>
+                        <option value="Nepal">Nepal</option>
+
+                    </select>
+                </div>
+                <div *ngIf="country !== 'India'" class="col-md-6 col-11">
+                    <label for="state" class="form-label">State</label>
+                    <input type="text" class="form-control" id="statefield" [(ngModel)]="state" name="state"
+                        autocomplete="off" maxlength="20" (keypress)="stateValidation($event)">
+                </div>
+                <div *ngIf="country === 'India'" class="col-md-6 col-11">
+                    <label for="state" class="form-label">State</label>
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="state" name="state">
+                        <option value="Uttarakhand">Uttarkhand</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Punjab">Punjab</option>
+                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                        <option value="Assam">Assam</option>
+                        <option value="Bihar">Bihar</option>
+                        <option value="Goa">Goa</option>
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Haryana">Haryana</option>
+                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    </select>
+                </div>
+            </div>
+
+
+
+            <div class="row mb-3">
+                <div class="col-md-6 col-11">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" class="form-control" id="cityfield" aria-describedby="emailHelp"
+                        [(ngModel)]="city" name="city" autocomplete="off" (keypress)="cityValidation($event)"
+                        maxlength="20">
+                </div>
+            </div>
+
+
+            <div class="row mb-5">
+                <div class="col-md-6 col-11">
+                    <label for="mobile" class="form-label">Mobile</label>
+                    <input type="tel" class="form-control" id="mobilefield" aria-describedby="emailHelp"
+                        [(ngModel)]="mobile" name="mobile" autocomplete="off" (keypress)="mobileValidation($event)"
+                        maxlength="10">
+                </div>
+                <div class="col-md-6 col-11">
+                    <label for="pincode" class="form-label">Pin Code</label>
+                    <input type="text" class="form-control" id="pincodefield" aria-describedby="emailHelp"
+                        [(ngModel)]="pincode" name="pincode" autocomplete="off" (keypress)="pincodeValidation($event)"
+                        maxlength="4">
+                </div>
+            </div>
+
+            <div class="text-center pt-3">
+                <button type="submit" class="btn btn-success rounded-0 w-50">Update</button>
+            </div>
+        </form>
+    </div>
+</div>

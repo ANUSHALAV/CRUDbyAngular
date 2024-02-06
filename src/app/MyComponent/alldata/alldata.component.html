@@ -1,0 +1,51 @@
+<section class="top-section">
+    <app-header></app-header>
+</section>
+
+<section class="table-section">
+
+    <div class="container-fluid mb-5 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <p class="fs-1 fw-bold">All Data</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Country</th>
+                    <th>State</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let item of alluser">
+                    <td>{{item.Name}}</td>
+                    <td>{{item.Age}}</td>
+                    <td>{{item.Email}}</td>
+                    <td>{{item.Mobile}}</td>
+                    <td>{{item.Country}}</td>
+                    <td>{{item.State}}</td>
+                    <td>{{item.City}}</td>
+
+                    <td>
+                        <button class="btn btn-primary" id="{{item.Id}}" (click)="clickEditBtn(item)">Edit</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" id="{{item.Id}}"
+                            (click)="clickDeleteBtn(item.Id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</section>
