@@ -37,8 +37,9 @@
                     <td>{{item.City}}</td>
 
                     <td>
-                        <button class="btn btn-primary" id="{{item.Id}}" (click)="clickEditBtn(item)">Edit</button>
-                    </td>
+                        <a class="update-link btn btn-primary" [routerLink]="['/update', item.Id]">Edit</a>
+                      </td>
+                      
                     <td>
                         <button class="btn btn-danger" id="{{item.Id}}"
                             (click)="clickDeleteBtn(item.Id)">Delete</button>

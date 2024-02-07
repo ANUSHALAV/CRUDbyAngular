@@ -10,7 +10,7 @@ import { HealthServiceService, UserRespoce, } from 'src/app/Service/health-servi
 export class AlldataComponent {
   id: number | undefined
 
-  constructor(private healthservice: HealthServiceService, private router: Router) {}
+  constructor(private healthservice: HealthServiceService, private router: Router) { }
 
   alluser!: UserRespoce[];
 
@@ -26,17 +26,22 @@ export class AlldataComponent {
   }
 
   clickEditBtn(data: any) {
-    this.id = data.Id
-    this.router.navigate(['/update',this.id]);
+    this.id = data.Id;
+    this.router.navigate(['/update', this.id]);
   }
 
   clickDeleteBtn(id: number) {
-    this.healthservice.deleteData(id).subscribe({
-      next: (res) => {
-        alert("Data deleted..");
-        this.getAllUserList();
-      },
-      error: console.log,
-    });
+    let conform = confirm("Do you want to delete the data?");
+    if (conform) {
+      this.healthservice.deleteData(id).subscribe({
+        next: (res) => {
+
+          this.getAllUserList();
+        },
+        error: console.log,
+      });
+    } else {
+
+    }
   }
 }

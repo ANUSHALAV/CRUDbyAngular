@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: "about", component: AboutComponent },
   { path: "ragister", component: RagistrationComponent },
   { path: "alldata", component: AlldataComponent },
-  { path: "update/:param", component: UpdateComponent }
+  { path: 'update/:id', component: UpdateComponent }
 ];
 
 @NgModule({

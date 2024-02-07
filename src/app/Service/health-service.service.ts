@@ -20,6 +20,8 @@ export interface UserRespoce{
   providedIn: 'root'
 })
 export class HealthServiceService {
+  snapshot: any;
+  
 
   constructor(private httpClient: HttpClient){}
   
@@ -28,8 +30,8 @@ export class HealthServiceService {
     return this.httpClient.get("https://localhost:44308/api/health");
   }
 
-  getDataById(id:number){
-    return this.httpClient.get("https://localhost:44308/api/health/"+id)
+  getDataById(id:string){
+    return this.httpClient.get(`https://localhost:44308/api/health/${id}`);
   }
 
   saveData(inputdata :object){
@@ -40,6 +42,10 @@ export class HealthServiceService {
     return this.httpClient.delete("https://localhost:44308/api/health/"+id);
   } 
 
+  updateDataById(id:number, inputdata: object) {
+    const apiUrl = `https://localhost:44308/api/health/${id}`;
+    return this.httpClient.put(apiUrl, inputdata);
+  }
 
 
   
