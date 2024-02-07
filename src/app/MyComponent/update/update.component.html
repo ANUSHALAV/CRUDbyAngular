@@ -17,13 +17,13 @@
                     <label for="name" class="form-label">Name</label>
                     <input type="name" class="form-control" id="namefield" aria-describedby="emailHelp"
                     [(ngModel)]="dataobj.Name" name="name" autocomplete="off" required="on"
-                        (keypress)="nameValidation($event)" maxlength="25">
+                        (keypress)="nameValidation($event)" maxlength="25" [(ngModel)]="name">
                 </div>
                 <div class="col-md-6 col-11">
                     <label for="email" class="form-label">Email address</label>
                     <input type="email" class="form-control" id="emailfield" aria-describedby="emailHelp"
                         [(ngModel)]="dataobj.Email" name="email" autocomplete="off" required="on"
-                        (keypress)="emailValidation($event)">
+                        (keypress)="emailValidation($event)" [(ngModel)]="email">
                 </div>
             </div>
 
@@ -32,11 +32,11 @@
                 <div class="col-md-6 col-11">
                     <label for="age" class="form-label">Age</label>
                     <input type="text" class="form-control" id="agefield" aria-describedby="emailHelp" [(ngModel)]="dataobj.Age"
-                        name="age" autocomplete="off" (keypress)="ageValidation($event)" maxlength="2">
+                        name="age" autocomplete="off" (keypress)="ageValidation($event)" maxlength="2" [(ngModel)]="age">
                 </div>
                 <div class="col-md-6 col-11">
                     <label for="gender" class="form-label">Gender</label>
-                    <select class="form-select" aria-label="Default select example" [(ngModel)]="dataobj.Gender" name="gender">
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="dataobj.Gender" name="gender" [(ngModel)]="gender">
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                         <option value="Other">Other</option>
@@ -50,7 +50,7 @@
                 <div class="col-md-6 col-11">
                     <label for="country" class="form-label">Country</label>
                     <select class="form-select" aria-label="Default select example" [(ngModel)]="dataobj.Country" name="country"
-                        (change)="countryChange()">
+                        (change)="countryChange()" [(ngModel)]="country">
                         <option value="India">India</option>
                         <option value="Pakishtan">Pakishtan</option>
                         <option value="Nepal">Nepal</option>
@@ -60,11 +60,11 @@
                 <div *ngIf="country !== 'India'" class="col-md-6 col-11">
                     <label for="state" class="form-label">State</label>
                     <input type="text" class="form-control" id="statefield" [(ngModel)]="dataobj.State" name="state"
-                        autocomplete="off" maxlength="20" (keypress)="stateValidation($event)">
+                        autocomplete="off" maxlength="20" (keypress)="stateValidation($event)" [(ngModel)]="state">
                 </div>
                 <div *ngIf="country === 'India'" class="col-md-6 col-11">
                     <label for="state" class="form-label">State</label>
-                    <select class="form-select" aria-label="Default select example" [(ngModel)]="dataobj.State" name="state">
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="dataobj.State" name="state" [(ngModel)]="state">
                         <option value="Uttarakhand">Uttarkhand</option>
                         <option value="Delhi">Delhi</option>
                         <option value="Punjab">Punjab</option>
@@ -89,7 +89,7 @@
                     <label for="city" class="form-label">City</label>
                     <input type="text" class="form-control" id="cityfield" aria-describedby="emailHelp"
                         [(ngModel)]="dataobj.City" name="city" autocomplete="off" (keypress)="cityValidation($event)"
-                        maxlength="20">
+                        maxlength="20" [(ngModel)]="city">
                 </div>
             </div>
 
@@ -99,13 +99,13 @@
                     <label for="mobile" class="form-label">Mobile</label>
                     <input type="tel" class="form-control" id="mobilefield" aria-describedby="emailHelp"
                         [(ngModel)]="dataobj.Mobile" name="mobile" autocomplete="off" (keypress)="mobileValidation($event)"
-                        maxlength="10">
+                        maxlength="10" [(ngModel)]="mobile">
                 </div>
                 <div class="col-md-6 col-11">
                     <label for="pincode" class="form-label">Pin Code</label>
                     <input type="text" class="form-control" id="pincodefield" aria-describedby="emailHelp"
                         [(ngModel)]="dataobj.PinCode" name="pincode" autocomplete="off" (keypress)="pincodeValidation($event)"
-                        maxlength="6">
+                        maxlength="6" [(ngModel)]="pincode">
                 </div>
             </div>
             

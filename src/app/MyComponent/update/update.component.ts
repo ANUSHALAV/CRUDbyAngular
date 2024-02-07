@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { HealthServiceService } from 'src/app/Service/health-service.service';
 
 @Component({
@@ -16,12 +17,13 @@ export class UpdateComponent implements OnInit {
   mobile: number = 0;
   age: number = 0;
   country: string = "";
-  state:string | undefined;
+  state: string | undefined;
   gender: string = "";
 
 
   constructor(private route: ActivatedRoute,
-    private healthservice: HealthServiceService) { }
+    private healthservice: HealthServiceService,
+    private router: Router) { }
 
   dataobj: any = {};
   ngOnInit(): void {
@@ -51,11 +53,9 @@ export class UpdateComponent implements OnInit {
 
   updateData() {
 
-    this.name = this.name?.trim();
-    this.state = this.state?.trim();
+
 
     var data = {
-
       name: this.name,
       email: this.email,
       pincode: this.pincode,
@@ -67,42 +67,42 @@ export class UpdateComponent implements OnInit {
       gender: this.gender
     }
 
-    if (data.name == null) {
-      alert("Please Enter the Name");
-    } else if (data.name.length < 4) {
-      alert("Enter the Valid Name");
-    } else if (data.email == null) {
-      alert("Please Enter the Email");
-    } else if (data.age == null) {
-      alert("Please Enter the Age");
-    } else if (data.age > 99) {
-      alert("Please Enter the Valid Age");
-    }
-    else if (data.gender == null) {
-      alert("Please Enter the Gender");
-    } else if (data.country == null) {
-      alert("Please Enter the Country");
-    } else if (data.state == null) {
-      alert("Please Enter the State");
-    } else if (data.city == null) {
-      alert("Please Enter the City");
-    } else if (data.mobile == null) {
-      alert("Please Enter the Mobile");
-    } else if (data.pincode == null) {
-      alert("Please Enter the Pin Code");
-    } else {
-      this.healthservice.updateDataById(this.dataobj.Id, data).subscribe({
-        next: (res: any) => {
-          alert("Data updated successfully");
-          this.resetForm();
-        },
-        error: (error: any) => {
-          console.error("Error updating data:", error);
-          alert("Data not updated successfully");
-          this.resetForm();
-        }
-      });
-    }
+    this.healthservice.updateDataById(this.dataobj.Id, this.dataobj).subscribe({
+      next: (res: any) => {
+        alert("Data updated successfully");
+        this.resetForm();
+        this.router.navigate(['alldata']);
+      },
+      error: (error: any) => {
+        alert("Data not updated successfully");
+        this.resetForm();
+      }
+    });
+
+    // if (data.name == null) {
+    //   alert("Please Enter the Name");
+    // } else if (data.email == null) {
+    //   alert("Please Enter the Email");
+    // } else if (data.age == null) {
+    //   alert("Please Enter the Age");
+    // } else if (data.age > 99) {
+    //   alert("Please Enter the Valid Age");
+    // }
+    // else if (data.gender == null) {
+    //   alert("Please Enter the Gender");
+    // } else if (data.country == null) {
+    //   alert("Please Enter the Country");
+    // } else if (data.state == null) {
+    //   alert("Please Enter the State");
+    // } else if (data.city == null) {
+    //   alert("Please Enter the City");
+    // } else if (data.mobile == null) {
+    //   alert("Please Enter the Mobile");
+    // } else if (data.pincode == null) {
+    //   alert("Please Enter the Pin Code");
+    // } else {
+
+    // }
   }
 
 
