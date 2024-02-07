@@ -67,17 +67,24 @@ export class UpdateComponent implements OnInit {
       gender: this.gender
     }
 
-    this.healthservice.updateDataById(this.dataobj.Id, this.dataobj).subscribe({
-      next: (res: any) => {
-        alert("Data updated successfully");
-        this.resetForm();
-        this.router.navigate(['alldata']);
-      },
-      error: (error: any) => {
-        alert("Data not updated successfully");
-        this.resetForm();
-      }
-    });
+    let conform = confirm("Do you want to Update the deatil?");
+
+    if (conform) {
+
+      this.healthservice.updateDataById(this.dataobj.Id, this.dataobj).subscribe({
+        next: (res: any) => {
+          this.resetForm();
+          this.router.navigate(['alldata']);
+        },
+        error: (error: any) => {
+          alert("Data not updated successfully");
+          this.resetForm();
+        }
+      });
+    }
+    else {
+
+    }
 
     // if (data.name == null) {
     //   alert("Please Enter the Name");
